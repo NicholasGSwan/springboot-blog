@@ -1,6 +1,8 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
+import com.codeup.blog.services.PostSvc;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,23 +16,29 @@ import java.util.List;
 
 @Controller
 public class PostsController {
+    private final PostSvc postSvc;
+
+    @Autowired
+    public PostsController(PostSvc postSvc){
+        this.postSvc = postSvc;
+    }
 
     @GetMapping("/posts")
     public String postsIndex(Model viewModel){
-        Post firstPost = new Post("First Post", "This is the first Post");
-        Post secondPost = new Post("Second Post", "this is the second post.");
-        List<Post> posts = new ArrayList<>();
-        posts.add(firstPost);
-        posts.add(secondPost);
+
+        List<Post> posts = postSvc.findAll();
         viewModel.addAttribute("posts", posts);
         return "posts/index";
+
+
+
     }
 
 
     @GetMapping("/posts/{id}")
     public String viewPost(@PathVariable String id, Model viewModel){
         viewModel.addAttribute("postId", id);
-        Post singlePost = new Post("The title of the post", "this is the body of the post.  I'm showing the body of the post right here, it's a pretty good post");
+        Post singlePost = postSvc.findOne(Long.parseLong(id));
         viewModel.addAttribute("post", singlePost);
 
         return "posts/show";
