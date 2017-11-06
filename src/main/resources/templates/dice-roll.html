@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>ROLL THOSE DICE!</title>
+</head>
+<body>
+<div >
+<a th:each="die : ${dice}" th:href="@{/dice-roll/{die}(die=${die})}" th:text="${die}"></a>
+
+    <div><p>sup dawwwwwwwgggg</p></div>
+</div>
+</body>
+</html>
