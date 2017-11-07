@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header('Edit your post')">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form th:action="${'/posts/'+post.id+'/edit'}" th:include="fragments/post-form :: form" method="post" ></form>
+
+</body>
+</html>

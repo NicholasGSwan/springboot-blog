@@ -58,6 +58,6 @@ public class PostsController {
     @GetMapping("/posts/{id}/edit")
     public String showEditPostForm(Model viewModel,@PathVariable long id){
         viewModel.addAttribute(postSvc.findOne(id));
-        return "posts/create";
+        return "posts/edit";
     }
 }

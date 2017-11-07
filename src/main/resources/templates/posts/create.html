@@ -6,15 +6,11 @@
 </head>
 <body>
 
-<form action="/posts/create" method="post" th:object="${post}">
-    Title:
-    <input th:field="*{title}" />
-    <br/>
-    Description:
-    <input th:field="*{body}" />
-    <br/>
-    <input type="submit"/>
-</form>
+<div>
+    <h2>Create your post</h2>
+    <form action="/posts/create" th:include="fragments/post-form :: form" method="post"></form>
+
+</div>
 
 </body>
 </html>
