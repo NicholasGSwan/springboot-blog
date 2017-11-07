@@ -1,6 +1,9 @@
 package com.codeup.blog.services;
 
 import com.codeup.blog.models.Post;
+import com.codeup.blog.repositories.PostsRepository;
+import javafx.geometry.Pos;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,30 +11,37 @@ import java.util.List;
 
 @Service("postSvc")
 public class PostSvc {
-    private List<Post> posts = new ArrayList<>();
+    private final PostsRepository postsDao;
 
-    public PostSvc(){
-        createPosts();
+    @Autowired
+    public PostSvc(PostsRepository postsDao){
+        this.postsDao = postsDao;
+//        createPosts();
     }
 
-    public List<Post> findAll(){
-        return posts;
+    public Iterable<Post> findAll(){
+        return postsDao.findAll();
     }
 
     public Post findOne(long id){
-        return posts.get((int)id - 1);
+        return postsDao.findOne(id);
     }
 
     public Post save(Post post){
-        post.setId(posts.size() +1);
-        posts.add(post);
-        return post;
+
+        return postsDao.save(post);
     }
 
-    private void createPosts(){
-        this.save(new Post("Post one", "this is the first post that createPosts makes."));
-        this.save(new Post("Post two", "this is the second post that createPosts makes."));
-        this.save(new Post("Post three", "this is the second post that createPosts makes."));
+    public void delete(Post post){
+        postsDao.delete(post);
     }
+
+
+
+//    private void createPosts(){
+//        this.save(new Post("Post one", "this is the first post that createPosts makes."));
+//        this.save(new Post("Post two", "this is the second post that createPosts makes."));
+//        this.save(new Post("Post three", "this is the second post that createPosts makes."));
+//    }
 
 }
