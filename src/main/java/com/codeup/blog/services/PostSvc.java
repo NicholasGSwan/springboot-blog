@@ -21,7 +21,9 @@ public class PostSvc {
     public Post findOne(long id){
         return posts.get((int)id - 1);
     }
+
     public Post save(Post post){
+        post.setId(posts.size() +1);
         posts.add(post);
         return post;
     }
