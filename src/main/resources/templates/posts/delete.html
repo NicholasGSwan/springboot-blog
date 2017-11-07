@@ -8,8 +8,10 @@
 <div th:object="${post}">
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.body}"></p>
-    <a th:href="${'/posts/'+post.id+'/delete/confirm'}">Confirm Delete</a>
-    <a href="/posts">Cancel Delete</a>
+    <form th:action="${'/posts/'+post.id+'/delete'}" method="post">
+        <button type="submit">Confirm Delete</button>
+    </form>
+    <form action="/posts" method="get"><button type="submit">Cancel Delete</button></form>
 </div>
 
 </body>
