@@ -22,9 +22,7 @@ public class PostsController {
 
     @GetMapping("/posts")
     public String postsIndex(Model viewModel){
-
-        List<Post> posts = postSvc.findAll();
-        viewModel.addAttribute("posts", posts);
+        viewModel.addAttribute("posts", postSvc.findAll());
         return "posts/index";
 
 
@@ -57,7 +55,22 @@ public class PostsController {
 
     @GetMapping("/posts/{id}/edit")
     public String showEditPostForm(Model viewModel,@PathVariable long id){
-        viewModel.addAttribute(postSvc.findOne(id));
+        viewModel.addAttribute("post",postSvc.findOne(id));
         return "posts/edit";
+    }
+    @PostMapping("/posts/{id}/edit")
+    public String editPost(@ModelAttribute Post post){
+        postSvc.save(post);
+        return "redirect:/posts";
+    }
+    @GetMapping("/posts/{id}/delete")
+    public String showDeletePostForm(Model viewModel,@PathVariable long id){
+        viewModel.addAttribute("post", postSvc.findOne(id));
+        return "posts/delete";
+    }
+    @GetMapping("/posts/{id}/delete/confirm")
+    public String deletePost(@PathVariable long id){
+        postSvc.delete(postSvc.findOne(id));
+        return "redirect:/posts";
     }
 }
