@@ -1,6 +1,7 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
+import com.codeup.blog.repositories.UsersRepository;
 import com.codeup.blog.services.PostSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,15 +15,18 @@ import java.util.List;
 @Controller
 public class PostsController {
     private final PostSvc postSvc;
+    private final UsersRepository usersDao;
 
     @Autowired
-    public PostsController(PostSvc postSvc){
+    public PostsController(PostSvc postSvc,UsersRepository usersDao){
         this.postSvc = postSvc;
+        this.usersDao = usersDao;
     }
 
     @GetMapping("/posts")
     public String postsIndex(Model viewModel){
         viewModel.addAttribute("posts", postSvc.findAll());
+        viewModel.addAttribute("users", usersDao.findAll());
         return "posts/index";
 
 
@@ -35,6 +39,7 @@ public class PostsController {
         viewModel.addAttribute("postId", id);
         Post singlePost = postSvc.findOne(Long.parseLong(id));
         viewModel.addAttribute("post", singlePost);
+        viewModel.addAttribute("user", usersDao.findOne(singlePost.getUser().getId()));
 
         return "posts/show";
     }
@@ -49,6 +54,7 @@ public class PostsController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post){
+        post.setUser(usersDao.findOne(1L));
         postSvc.save(post);
         return "redirect:/posts";
     }
