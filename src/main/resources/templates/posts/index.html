@@ -5,8 +5,10 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <div th:each="post : ${posts}">
-    <h3 th:text="${post.title}"></h3>
+    <a th:href="${'/posts/'+post.id}"><h3 th:text="${post.title}"></h3></a>
     <p th:text="${post.body}"></p>
+    <a th:href="${'/posts/'+post.id+'/edit'}">Edit Post</a>
+    <a th:href="${'/posts/'+post.id+'/delete'}">Delete Post</a>
 </div>
 
 

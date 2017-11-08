@@ -68,9 +68,14 @@ public class PostsController {
         viewModel.addAttribute("post", postSvc.findOne(id));
         return "posts/delete";
     }
-    @GetMapping("/posts/{id}/delete/confirm")
-    public String deletePost(@PathVariable long id){
-        postSvc.delete(postSvc.findOne(id));
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@ModelAttribute Post post){
+        postSvc.delete(post);
         return "redirect:/posts";
     }
+//    @GetMapping("/posts/{id}/delete/confirm")
+//    public String deletePost(@PathVariable long id){
+//        postSvc.delete(postSvc.findOne(id));
+//        return "redirect:/posts";
+//    }
 }
