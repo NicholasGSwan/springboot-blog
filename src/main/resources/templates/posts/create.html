@@ -8,7 +8,7 @@
 
 <div>
     <h2>Create your post</h2>
-    <form action="/posts/create" th:include="fragments/post-form :: form" method="post" th:object="${post}"></form>
+    <form th:action="@{/posts/create}" th:include="fragments/post-form :: form" th:method="post" th:object="${post}"></form>
 
 </div>
 

@@ -1,9 +1,11 @@
 package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
+import com.codeup.blog.models.User;
 import com.codeup.blog.repositories.UsersRepository;
 import com.codeup.blog.services.PostSvc;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -54,7 +56,9 @@ public class PostsController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post){
-        post.setUser(usersDao.findOne(1L));
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        post.setUser(user);
         postSvc.save(post);
         return "redirect:/posts";
     }
@@ -75,8 +79,9 @@ public class PostsController {
         return "posts/delete";
     }
     @PostMapping("/posts/{id}/delete")
-    public String deletePost(@ModelAttribute Post post){
-        postSvc.delete(post);
+    public String deletePost(@PathVariable Long id){
+
+        postSvc.delete(postSvc.findOne(id));
         return "redirect:/posts";
     }
 //    @GetMapping("/posts/{id}/delete/confirm")

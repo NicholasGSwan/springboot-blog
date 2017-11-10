@@ -7,14 +7,24 @@ import java.util.List;
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String username;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
     private String password;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Post> posts;
+
+    public User(){
+    }
+
+    public User(User copy){
+        id = copy.id;
+        email = copy.email;
+        username = copy.username;
+        password = copy.password;
+    }
 
 
     public long getId() {

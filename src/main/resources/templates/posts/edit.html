@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:action="${'/posts/'+post.id+'/edit'}" th:include="fragments/post-form :: form" method="post" th:object="${post}" ></form>
+<form th:action="${'/posts/'+post.id+'/edit'}" th:include="fragments/post-form :: form" th:method="post" th:object="${post}" ></form>
 
 </body>
 </html>
