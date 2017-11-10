@@ -79,8 +79,9 @@ public class PostsController {
         return "posts/delete";
     }
     @PostMapping("/posts/{id}/delete")
-    public String deletePost(@ModelAttribute Post post){
-        postSvc.delete(post);
+    public String deletePost(@PathVariable Long id){
+
+        postSvc.delete(postSvc.findOne(id));
         return "redirect:/posts";
     }
 //    @GetMapping("/posts/{id}/delete/confirm")

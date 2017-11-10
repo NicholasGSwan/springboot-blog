@@ -2,7 +2,6 @@ package com.codeup.blog.services;
 
 import com.codeup.blog.models.Post;
 import com.codeup.blog.repositories.PostsRepository;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
