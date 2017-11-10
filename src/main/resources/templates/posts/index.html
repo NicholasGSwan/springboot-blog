@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="fragments/header :: main-header('Posts Index')">
 </head>
-<body>
+<body class="blog">
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <div th:each="post : ${posts}">
     <a th:href="${'/posts/'+post.id}"><h3 th:text="${post.title}"></h3></a>

@@ -8,5 +8,7 @@
 
 <form th:action="${'/posts/'+post.id+'/edit'}" th:include="fragments/post-form :: form" th:method="post" th:object="${post}" ></form>
 
+<footer th:replace="fragments/footer :: main-footer"></footer>
+
 </body>
 </html>

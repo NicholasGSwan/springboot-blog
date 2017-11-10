@@ -11,6 +11,7 @@
     <form th:action="@{/posts/create}" th:include="fragments/post-form :: form" th:method="post" th:object="${post}"></form>
 
 </div>
+<footer th:replace="fragments/footer :: main-footer"></footer>
 
 </body>
 </html>
