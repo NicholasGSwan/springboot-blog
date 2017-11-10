@@ -56,7 +56,9 @@ public class PostsController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post){
-        post.setUser((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        post.setUser(user);
         postSvc.save(post);
         return "redirect:/posts";
     }
