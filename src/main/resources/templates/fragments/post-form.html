@@ -9,9 +9,11 @@
 <form th:fragment="form" >
     <label for="title">Title</label>
     <input id="title" th:field="*{title}" />
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" />
     <br/>
     <label for="body">Body</label>
     <input id="body" th:field="*{body}" />
+    <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}" />
     <input type="submit"/>
 </form>
 

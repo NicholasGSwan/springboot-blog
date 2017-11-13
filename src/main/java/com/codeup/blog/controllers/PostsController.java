@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,9 +57,14 @@ public class PostsController {
 
 
     @PostMapping("/posts/create")
-    public String createPost(@ModelAttribute Post post){
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String createPost(@Valid Post post, Errors validation, Model model){
+        if(validation.hasErrors()){
+            model.addAttribute("errors", validation);
+            model.addAttribute("post", post);
+            return "posts/create";
+        }
 
+        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         post.setUser(user);
         postSvc.save(post);
         return "redirect:/posts";
@@ -69,7 +76,12 @@ public class PostsController {
         return "posts/edit";
     }
     @PostMapping("/posts/{id}/edit")
-    public String editPost(@ModelAttribute Post post){
+    public String editPost(@Valid Post post, Errors validation, Model model){
+        if(validation.hasErrors()){
+            model.addAttribute("errors", validation);
+            model.addAttribute("post", post);
+            return "posts/edit";
+        }
         postSvc.save(post);
         return "redirect:/posts";
     }

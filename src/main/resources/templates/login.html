@@ -15,11 +15,29 @@
 </div>
 
 <form th:action="@{/login}" method="post">
-    <label for="username">Username</label>
+    <table>
+        <tr>
+            <td>
+    <label for="username">Username:</label>
+            </td>
+            <td>
     <input id="username" name="username" type="text" />
-    <label for="password">Password</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+    <label for="password">Password:</label>
+            </td>
+            <td>
     <input id="password" name="password" type="password" />
+            </td>
+        </tr>
+        <tr>
+            <td>
     <input type="submit" value="Log In" />
+            </td>
+        </tr>
+    </table>
 </form>
 <footer th:replace="fragments/footer :: main-footer"></footer>
 </body>
