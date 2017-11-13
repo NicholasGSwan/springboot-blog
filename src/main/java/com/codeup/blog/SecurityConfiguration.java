@@ -20,6 +20,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder());
+    }
 @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -39,9 +43,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/posts/create") // only authenticated users can create ads
                 .authenticated()  ;
     }
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetails).passwordEncoder(passwordEncoder());
-    }
+
 
 }
