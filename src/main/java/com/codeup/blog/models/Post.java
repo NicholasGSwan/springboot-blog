@@ -1,5 +1,6 @@
 package com.codeup.blog.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class Post {
     private long id;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private User user;
 
     public Post(){};

@@ -96,6 +96,11 @@ public class PostsController {
         postSvc.delete(postSvc.findOne(id));
         return "redirect:/posts";
     }
+
+//    @GetMapping("/posts.json")
+//    public @ResponseBody List<Post> viewAllPostsInJSONFormat(){
+//        return postSvc.findAll();
+//    }
 //    @GetMapping("/posts/{id}/delete/confirm")
 //    public String deletePost(@PathVariable long id){
 //        postSvc.delete(postSvc.findOne(id));
