@@ -5,8 +5,6 @@ import com.codeup.blog.repositories.PostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Service("postSvc")
 public class PostSvc {
