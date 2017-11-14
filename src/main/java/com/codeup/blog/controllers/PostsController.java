@@ -2,7 +2,8 @@ package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
 import com.codeup.blog.models.User;
-import com.codeup.blog.repositories.UsersRepository;
+import com.codeup.blog.repositories.Users;
+
 import com.codeup.blog.services.PostSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,17 +13,16 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 @Controller
 public class PostsController {
     private final PostSvc postSvc;
-    private final UsersRepository usersDao;
+    private final Users usersDao;
 
     @Autowired
-    public PostsController(PostSvc postSvc,UsersRepository usersDao){
+    public PostsController(PostSvc postSvc,Users usersDao){
         this.postSvc = postSvc;
         this.usersDao = usersDao;
     }
@@ -97,10 +97,15 @@ public class PostsController {
         return "redirect:/posts";
     }
 
-//    @GetMapping("/posts.json")
-//    public @ResponseBody List<Post> viewAllPostsInJSONFormat(){
-//        return postSvc.findAll();
-//    }
+    @GetMapping("/posts.json")
+    public @ResponseBody Iterable<Post> viewAllPostsWithJSON(){
+        return postSvc.findAll();
+    }
+
+    @GetMapping("/posts/ajax")
+    public String viewAllPostsWithAjax(){
+        return "posts/ajax";
+    }
 //    @GetMapping("/posts/{id}/delete/confirm")
 //    public String deletePost(@PathVariable long id){
 //        postSvc.delete(postSvc.findOne(id));

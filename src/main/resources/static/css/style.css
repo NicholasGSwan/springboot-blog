@@ -7,7 +7,13 @@ p {
 }
 button.navbar-toggle{
     border: 2px solid cadetblue;
-    /*background-color: cadetblue;*/
+
+}
+button.navbar-toggle:hover{
+    background-color: #FF90AD;
+}
+.nav>li>a:hover{
+    background-color: #FF90AD;
 }
 span.icon-bar{
     background-color: cadetblue;
