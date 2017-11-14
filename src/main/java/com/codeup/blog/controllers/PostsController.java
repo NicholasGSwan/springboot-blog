@@ -2,7 +2,8 @@ package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
 import com.codeup.blog.models.User;
-import com.codeup.blog.repositories.UsersRepository;
+import com.codeup.blog.repositories.Users;
+
 import com.codeup.blog.services.PostSvc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,17 +13,16 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 @Controller
 public class PostsController {
     private final PostSvc postSvc;
-    private final UsersRepository usersDao;
+    private final Users usersDao;
 
     @Autowired
-    public PostsController(PostSvc postSvc,UsersRepository usersDao){
+    public PostsController(PostSvc postSvc,Users usersDao){
         this.postSvc = postSvc;
         this.usersDao = usersDao;
     }
