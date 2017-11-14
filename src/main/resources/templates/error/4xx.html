@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: main-header('Oops, something ain\'t right')">
+</head>
+<body>
+    <th:block th:switch="${error}">
+        <div th:case="'Not Found'">
+            <h1>Page not found!!</h1>
+        </div>
+        <div th:case="'Forbidden'">
+            <h1>You don't have permission to view this page...</h1>
+        </div>
+    </th:block>
+    <div>
+        <p>Try <a th:href="/posts">going back to the main posts page</a>, or try again later!</p>
+    </div>
+
+<footer th:replace="fragments/footer :: main-footer"></footer>
+</body>
+</html>
