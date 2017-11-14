@@ -3,9 +3,10 @@
 <head th:replace="fragments/header :: main-header('Internal Error')">
 </head>
 <body>
-<h1 th:text="${error+' couldn\'t reach the page.'}"></h1>
+<h1>500 Error!</h1>
+<p>There was an internal error!</p>
 <div>
-    <p>Try <a th:href="/posts">going back to the main posts page</a>, or try again later!</p>
+    <p>Try <a href="/posts">going back to the main posts page</a>, or try again later!</p>
 </div>
 
 

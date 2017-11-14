@@ -10,5 +10,4 @@
         });
         $('#posts').html(html);
     });
-
 })(jQuery);
