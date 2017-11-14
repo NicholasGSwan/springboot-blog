@@ -97,10 +97,15 @@ public class PostsController {
         return "redirect:/posts";
     }
 
-//    @GetMapping("/posts.json")
-//    public @ResponseBody List<Post> viewAllPostsInJSONFormat(){
-//        return postSvc.findAll();
-//    }
+    @GetMapping("/posts.json")
+    public @ResponseBody Iterable<Post> viewAllPostsWithJSON(){
+        return postSvc.findAll();
+    }
+
+    @GetMapping("/posts/ajax")
+    public String viewAllPostsWithAjax(){
+        return "posts/ajax";
+    }
 //    @GetMapping("/posts/{id}/delete/confirm")
 //    public String deletePost(@PathVariable long id){
 //        postSvc.delete(postSvc.findOne(id));
