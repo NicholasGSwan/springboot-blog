@@ -5,10 +5,11 @@
     <title>Title</title>
 </head>
 <body>
+<nav th:replace="fragments/navbar:: mainNavbar"></nav>
 <div>
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.body}"></p>
-    <p th:text="'created by:'+${user.email}"></p>
+    <p th:text="'created by:'+${user.username}"></p>
 </div>
 
 <footer th:replace="fragments/footer :: main-footer"></footer>
