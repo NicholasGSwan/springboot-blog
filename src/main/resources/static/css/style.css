@@ -1,3 +1,5 @@
+
+
 body {
     background-color: lightpink;
     color: cadetblue;
@@ -12,10 +14,57 @@ button.navbar-toggle{
 button.navbar-toggle:hover{
     background-color: #FF90AD;
 }
-.nav>li>a:hover{
+.nav>li>a:hover, button.btn-link.btn:hover{
     background-color: #FF90AD;
+}
+button.btn-link.btn:hover{
+    text-decoration: none;
+    color: #23527c;
+}
+button.btn-link.btn{
+    color: cadetblue;
+    margin: 0;
+    border:none;
+    width: 100%;
+    text-align: left;
+    padding: 10px 15px;
+
+}
+button.btn-link.btn:visited{
+    color: cadetblue;
 }
 span.icon-bar{
     background-color: cadetblue;
 }
 a{color: cadetblue}
+
+.btn-custom{
+
+    background-color: lightpink;
+    border: 2px solid cadetblue;
+    color: cadetblue;
+}
+.btn-post{
+    margin-left: 15px;
+}
+.btn-custom:hover{
+    background-color: #FF90AD;
+    border: 1px solid cadetblue;
+    color: cadetblue;
+}
+.btn-custom:active{
+    background-color: cadetblue;
+    border: 1px solid lightpink;
+    color: lightpink;
+    cursor: pointer;
+}
+/*form.highlight:hover{*/
+    /*background-color: #FF90AD;*/
+
+/*}*/
+@media screen and (min-width:768px){
+    button.btn-link.btn{
+        padding: 15px;
+    }
+
+}
