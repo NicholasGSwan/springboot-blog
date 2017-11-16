@@ -9,10 +9,10 @@
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <div class="container">
 <h1 class="col-sm-offset-2">Log In</h1>
-<div th:if="${param.error}">
+<div th:if="${param.error}" class="col-sm-offset-2">
     Invalid Username and Password.
 </div>
-<div th:if="${param.logout}">
+<div th:if="${param.logout}" class="col-sm-offset-2">
     You have been logged out.
 </div>
 
