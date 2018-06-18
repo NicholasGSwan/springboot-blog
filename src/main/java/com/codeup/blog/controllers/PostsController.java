@@ -43,7 +43,7 @@ public class PostsController {
         viewModel.addAttribute("postId", id);
         Post singlePost = postSvc.findOne(Long.parseLong(id));
         viewModel.addAttribute("post", singlePost);
-        viewModel.addAttribute("user", usersDao.findOne(singlePost.getUser().getId()));
+        viewModel.addAttribute("user", usersDao.findById(singlePost.getUser().getId()).get());
 
         return "posts/show";
     }

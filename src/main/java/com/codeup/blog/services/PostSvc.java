@@ -21,7 +21,7 @@ public class PostSvc {
     }
 
     public Post findOne(long id){
-        return postsDao.findOne(id);
+        return postsDao.findById(id).get();
     }
 
     public Post save(Post post){
