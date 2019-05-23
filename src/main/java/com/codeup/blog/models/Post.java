@@ -1,7 +1,7 @@
 package com.codeup.blog.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import javax.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
