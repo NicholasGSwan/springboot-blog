@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<form th:fragment="form" >
+    <div class="row">
+    <div class="form-group col-xs-10 col-xs-offset-1">
+    <label for="title">Title</label>
+    <input class="form-control" id="title" th:field="*{title}" />
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" />
+    </div>
+    </div>
+        <br/>
+    <div class="row">
+    <div class="form-group col-xs-10 col-xs-offset-1">
+    <label for="body">Body</label>
+    <textarea class="form-control" id="body" rows="8" th:field="*{body}" />
+    <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}" />
+    </div>
+    </div>
+    <div class="row">
+        <div class=" col-xs-offset-1">
+        <input class="btn btn-default btn-custom btn-post" type="submit" value="Post!"/>
+
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

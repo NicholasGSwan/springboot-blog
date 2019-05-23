@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: main-header('Delete Post')">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="fragments/navbar:: mainNavbar"></nav>
+<div th:object="${post}">
+    <h3 th:text="${post.title}"></h3>
+    <p th:text="${post.body}"></p>
+    <form th:action="${'/posts/'+post.id+'/delete'}" th:method="post">
+        <button type="submit">Confirm Delete</button>
+    </form>
+    <form th:action="@{/posts}" th:method="get"><button type="submit">Cancel Delete</button></form>
+</div>
+<footer th:replace="fragments/footer :: main-footer"></footer>
+</body>
+</html>

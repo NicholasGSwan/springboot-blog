@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: main-header('Posts Index')">
+</head>
+<body class="blog">
+<nav th:replace="fragments/navbar :: mainNavbar"></nav>
+<div th:class="container">
+
+    <div class="row" th:each="post : ${posts}">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <a th:href="${'/posts/'+post.id}"><h3 th:text="${post.title}"></h3></a>
+        <p th:text="${post.body}"></p>
+        <a th:href="${'/posts/'+post.id+'/edit'}">Edit Post</a>
+        <a th:href="${'/posts/'+post.id+'/delete'}">Delete Post</a>
+        </div>
+    </div>
+</div>
+
+
+<footer th:replace="fragments/footer :: main-footer"></footer>
+</body>
+</html>
