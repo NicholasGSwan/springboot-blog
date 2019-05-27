@@ -1,5 +1,7 @@
 package com.codeup.blog.controllers;
 
+// import java.util.ArrayList;
+
 import com.codeup.blog.models.User;
 import com.codeup.blog.repositories.Users;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +29,27 @@ public class UsersController {
 
     @PostMapping("/users/sign-up")
     public String saveUser(@ModelAttribute User user){
+        if(isNotDuplicateUser(user)){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         users.save(user);
         return "redirect:/login";
+        }
+        return "redirect:/users/sign-up?error";
     }
+
+    private boolean isNotDuplicateUser(User user){
+        Boolean isNotDupe = true;
+        
+        for(User userInDB: users.findAll()){
+            if(userInDB.getEmail().equalsIgnoreCase(user.getEmail())| userInDB.getUsername().equalsIgnoreCase(user.getUsername())){
+                isNotDupe = false;
+            }
+        }
+        return isNotDupe;
+
+        
+
+    };;
+        
+    
 }

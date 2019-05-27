@@ -7,6 +7,9 @@
 <body>
 <nav th:replace="fragments/navbar :: mainNavbar"></nav>
 <h1>Create an account</h1>
+<div th:if="${param.error}">
+    Username/Email already in use.
+</div>
 <form th:action="@{/users/sign-up}" method="POST" th:object="${user}">
     <label for="username">Username</label>
     <input id="username" th:field="*{username}" />
