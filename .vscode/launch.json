@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootBlogApplication<springboot-blog>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.codeup.blog.SpringbootBlogApplication",
+            "projectName": "springboot-blog",
+            "args": ""
+        }
+    ]
+}
